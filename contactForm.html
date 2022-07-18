@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contact Form</title>
+    <link rel="styleSheet" href="contactForm.css">
+</head>
+
+<body>
+    <div class="contact-box">
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <h3><u>CONTACT FORM</u></h3>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <input type="text" id="phone" placeholder="Phone no." required>
+            <textarea id="message" rows="4" placeholder="Your message"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    <script src="https://smtps.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail() {
+            Email.send({
+
+                Host: "smtp.yourisp.com",
+                Username: "username",
+                Password: "password",
+                To: 'them@website.com',
+                From: document.getElementById("email").value,
+                Subject: "New Contact Form",
+                Body: "And this is the body"
+
+            }).then(
+                message => alert(message)
+            );
+        }
+
+    </script>
+</body>
+
+</html>
